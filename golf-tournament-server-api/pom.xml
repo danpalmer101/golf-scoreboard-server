@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>golf-tournament-server-parent</artifactId>
+        <groupId>io.danpalmer101</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../golf-tournament-server-parent</relativePath>
+    </parent>
+
+    <artifactId>golf-tournament-server-api</artifactId>
+
+    <properties>
+        <raml.input.file>src/main/resources/raml/test.raml</raml.input.file>
+        <raml.output.directory>target/generated-sources</raml.output.directory>
+    </properties>
+
+    <dependencies>
+        <!-- Spring MVC REST -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- RAML -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals><goal>add-source</goal></goals>
+                        <configuration>
+                            <sources>
+                                <source>${raml.output.directory}</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.phoenixnap.oss</groupId>
+                <artifactId>springmvc-raml-plugin</artifactId>
+                <configuration>
+                    <ramlPath>${raml.input.file}</ramlPath>
+                    <outputRelativePath>${raml.output.directory}</outputRelativePath>
+                    <addTimestampFolder>false</addTimestampFolder>
+                    <basePackage>io.danpalmer101.golftournament.api</basePackage>
+                    <baseUri>/</baseUri>
+                    <seperateMethodsByContentType>false</seperateMethodsByContentType>
+                    <useJackson1xCompatibility>false</useJackson1xCompatibility>
+                    <rule>com.phoenixnap.oss.ramlapisync.generation.rules.Spring4ControllerDecoratorRule</rule>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-springmvc-controllers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate-springmvc-endpoints</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

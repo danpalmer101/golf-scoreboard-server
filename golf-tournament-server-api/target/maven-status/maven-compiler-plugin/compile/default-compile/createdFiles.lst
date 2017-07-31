@@ -1,0 +1,9 @@
+io/danpalmer101/golftournament/api/DrinkController.class
+io/danpalmer101/golftournament/api/model/GetDrinkByIdResponse.class
+io/danpalmer101/golftournament/api/HealthCheckControllerDecorator.class
+io/danpalmer101/golftournament/api/model/GetHealthCheckResponse.class
+io/danpalmer101/golftournament/api/model/UpdateDrinkByIdRequest.class
+io/danpalmer101/golftournament/api/model/GetDrinksResponse.class
+io/danpalmer101/golftournament/api/DrinkControllerDecorator.class
+io/danpalmer101/golftournament/api/HealthCheckController.class
+io/danpalmer101/golftournament/api/model/CreateDrinkRequest.class
