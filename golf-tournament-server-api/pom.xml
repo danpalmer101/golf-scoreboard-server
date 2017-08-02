@@ -14,68 +14,48 @@
     <artifactId>golf-tournament-server-api</artifactId>
 
     <properties>
-        <raml.input.file>src/main/resources/raml/test.raml</raml.input.file>
-        <raml.output.directory>target/generated-sources</raml.output.directory>
+        <swagger.input.spec>${project.basedir}/src/main/resources/swagger/courses.yaml</swagger.input.spec>
     </properties>
 
     <dependencies>
-        <!-- Spring MVC REST -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- RAML -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
-                        <goals><goal>add-source</goal></goals>
-                        <configuration>
-                            <sources>
-                                <source>${raml.output.directory}</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.phoenixnap.oss</groupId>
-                <artifactId>springmvc-raml-plugin</artifactId>
-                <configuration>
-                    <ramlPath>${raml.input.file}</ramlPath>
-                    <outputRelativePath>${raml.output.directory}</outputRelativePath>
-                    <addTimestampFolder>false</addTimestampFolder>
-                    <basePackage>io.danpalmer101.golftournament.api</basePackage>
-                    <baseUri>/</baseUri>
-                    <seperateMethodsByContentType>false</seperateMethodsByContentType>
-                    <useJackson1xCompatibility>false</useJackson1xCompatibility>
-                    <rule>com.phoenixnap.oss.ramlapisync.generation.rules.Spring4ControllerDecoratorRule</rule>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-springmvc-controllers</id>
-                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>generate-springmvc-endpoints</goal>
+                            <goal>generate</goal>
                         </goals>
+                        <configuration>
+                            <inputSpec>${swagger.input.spec}</inputSpec>
+                            <language>spring</language>
+                            <library>spring-mvc</library>
+                            <modelPackage>io.danpalmer101.golftournament.api.model</modelPackage>
+                            <apiPackage>io.danpalmer101.golftournament.api</apiPackage>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

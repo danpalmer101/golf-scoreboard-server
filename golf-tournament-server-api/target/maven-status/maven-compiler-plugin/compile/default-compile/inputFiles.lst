@@ -1,9 +1,0 @@
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/model/GetHealthCheckResponse.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/model/GetDrinksResponse.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/model/GetDrinkByIdResponse.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/model/UpdateDrinkByIdRequest.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/DrinkController.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/HealthCheckController.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/HealthCheckControllerDecorator.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/DrinkControllerDecorator.java
-/Users/danielp/Development/personal/golf-tournament-server/golf-tournament-server-api/target/generated-sources/io/danpalmer101/golftournament/api/model/CreateDrinkRequest.java
